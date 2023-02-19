@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { User } from './core/models/user';
 import { Wallet } from './core/models/wallet';
@@ -19,7 +20,7 @@ export class AppComponent implements OnInit {
   balance$ = this.store.select(getBalance)
   currencySymbol$ = this.store.select(getCurrencySymbol)
 
-  constructor(private store: Store<User | Wallet>) {}
+  constructor(private store: Store<User | Wallet>, private router: Router) {}
 
   ngOnInit(): void {
     this.store.dispatch(fetchWallet());
@@ -28,5 +29,9 @@ export class AppComponent implements OnInit {
 
   get currentYear(): number {
     return new Date().getFullYear();
+  }
+
+  navigateToLobby() {
+    this.router.navigate(['/'])
   }
 }
