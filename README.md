@@ -131,6 +131,27 @@ subscription OnUpdateWallet {
 
 Despite this setback, I aimed to complete the test as required. Instead of relying on the subscription, I made sure to dispatch another action to fetch the wallet whenever a reward was opened (triggered by a mutation). This approach is also commonly used when Graphql is not being used in the project and just RPC. I have experience using "Epics" for several years, both on the FE and BE.
 
+## Principles & Best Practices followed
+
+- Separation of concerns: The component class is responsible for the component's view logic, while the state management logic is handled by `ngrx/store`. This separation makes the code easier to understand and maintain.
+- OnPush change detection strategy: By using the `ChangeDetectionStrategy.OnPush` strategy, Angular will only check for changes to the component's inputs, outputs, or when an event fires. This can significantly improve performance in large applications.
+- Type safety: Typescript is used to add type safety to the component and state management logic. This helps prevent errors and makes it easier to understand the code.
+- Store and Selector functions: The state management logic is written using `ngrx/store` and `selector` functions. This makes the code easier to test and maintain, as the logic is separated into small, reusable functions.
+- Asynchronous code: Asynchronous code is handled using the Observable pattern, which is a common practice in Angular.
+- Explicit routes: Each route is defined explicitly using the Routes interface. This makes it clear which components are associated with which routes.
+- Path matching: The redirectTo route uses the pathMatch property to ensure that the default route only matches the exact URL.
+- AppModule separation: The routing configuration is defined in a separate `AppRoutingModule` module, which makes it easier to import and reuse in other modules.
+- Component's template: Separated in a different file, which follows the best practice of keeping the HTML, CSS and TS code separated.
+- Angular Animation: The components is using Angular animations which is a recommended approach when it comes to animation in Angular.
+- Reactive Programming: Components is using the reactive programming approach provided by `ngrx/store` and `ngrx/effects`, which is a recommended approach for state management in Angular.
+- AngularRouter: Components is using the built-in Angular Router for navigating between different views in the application which is the recommended approach for handling routing in Angular.
+- Subscribing onInit: Component is subscribing to state changes in the ngOnInit method, which is a best practice when it comes to using observables in Angular.
+- More
+
+## What else could have been added
+
+- Lazy loading: The example code does not demonstrate lazy loading of modules, but this feature should be used in larger applications to improve performance.
+
 ## Usage
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
