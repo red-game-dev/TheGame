@@ -8,23 +8,34 @@
   <div class="flex flex-col items-center">
     <!-- Gift box image -->
     <div class="relative w-80 h-80 overflow-hidden rounded-lg shadow-md transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 cursor-pointer"
-         (click)="onGiftBoxClick(item.id)"
+         (click)="onGiftBoxTap(item.id)"
          [@giftBoxOpen]="giftBoxState">
       <div class="absolute top-0 left-0 z-10 bg-red-500 text-white font-bold px-2 py-1">{{ currencySymbol$ | async }} {{ item.cost }}</div>
       <img class="w-full h-full object-contain" [src]="item.iconUrl" alt="{{ item.name }}">
-      
+
       <div *ngIf="item.boxOpenings" class="absolute inset-0 z-20 flex items-center justify-center">
         <div *ngFor="let price of item.boxOpenings" class="bg-red-500 text-white text-3xl font-bold p-4 rounded-lg">
-          <div [@obtainedWinnings]="obtainedWinningsState">You won "{{ price.itemVariant.name }}"" worth {{ currencySymbol$ | async }} {{ price.itemVariant.value }}</div>
+          <div [@obtainedWinnings]="obtainedWinningsState">You won "{{ price.itemVariant.name }}" worth {{ currencySymbol$ | async }} {{ price.itemVariant.value }}</div>
         </div>
       </div>
     </div>
     <!-- Item title -->
     <h1 class="text-3xl font-bold mt-8">{{ item.name }}</h1>
-    <button (click)="onGiftBoxClick(item.id)"
-      [@giftBoxOpen]="giftBoxState"
-      class="mt-4 px-4 py-2 bg-white text-red-500 text-lg font-semibold rounded-lg hover:bg-red-500 hover:text-white transition-colors duration-200 focus:outline-none">
-      Try your luck
-    </button>
+    <button *ngIf="!item.boxOpenings" (click)="onGiftBoxTap(item.id)"
+        [@giftBoxOpen]="giftBoxState"
+        [ngClass]="{'opacity-50 cursor-wait': loading$ | async}"
+        class="mt-4 px-4 py-2 bg-white text-red-500 text-lg font-semibold rounded-lg hover:bg-red-500 hover:text-white transition-colors duration-200 focus:outline-none"
+        [disabled]="loading$ | async">
+        <ng-container *ngIf="!(loading$ | async); else loadingIndicator">Try your luck</ng-container>
+        <ng-template #loadingIndicator>
+          <div class="flex items-center justify-center">
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647zM20 12a8 8 0 01-8 8v4c6.627 0 12-5.373 12-12h-4zm-2-5.291A7.962 7.962 0 0120 12h4c0-3.042-1.135-5.824-3-7.938l-3 2.647z"></path>
+            </svg>
+            <span>Loading...</span>
+          </div>
+        </ng-template>
+      </button>
   </div>
 </div>

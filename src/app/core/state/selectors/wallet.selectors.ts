@@ -4,13 +4,6 @@ import { walletAdapter, WalletState } from '../wallet.state';
 
 export const selectWalletState = createFeatureSelector<WalletState>('wallet');
 
-export const {
-  selectIds: selectItemIds,
-  selectEntities: selectItemEntities,
-  selectAll: selectAllItems,
-  selectTotal: selectTotalItems
-} = walletAdapter.getSelectors(selectWalletState);
-
 export const getWallet = createSelector(
   selectWalletState,
   walletAdapter.getSelectors().selectAll,

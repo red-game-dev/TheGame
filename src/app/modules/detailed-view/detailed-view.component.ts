@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { fetchBoxes, openBox } from 'src/app/core/state/actions/boxes.actions';
-import { getDetailViewBox } from 'src/app/core/state/selectors/boxes.selectors';
+import { getDetailViewBox, isBoxOpening } from 'src/app/core/state/selectors/boxes.selectors';
 import { getCurrencySymbol } from 'src/app/core/state/selectors/wallet.selectors';
 import { Box } from 'src/app/core/models/box';
 import { Wallet } from 'src/app/core/models/wallet';
@@ -51,26 +51,11 @@ import { Wallet } from 'src/app/core/models/wallet';
 export class DetailedViewComponent implements OnInit {
   box$ = this.store.select(getDetailViewBox);
   currencySymbol$ = this.store.select(getCurrencySymbol)
+  loading$ = this.store.select(isBoxOpening);
   giftBoxState = '';
   obtainedWinningsState = ''
 
-  constructor(private store: Store<Box | Wallet>, private router: Router) { }
-
-  onGiftBoxClick(id: string) {
-    this.giftBoxState = 'open';
-    
-    this.openBoxReward(id);
-  }
-
-  ngOnInit() {
-    this.store.dispatch(fetchBoxes({
-      payload: {
-        free: false,
-        purchasable: true,
-        openable: true
-      }
-    }));
-
+  constructor(private store: Store<Box | Wallet>, private router: Router) {
     this.box$.subscribe((box) => {
       console.log('box', box)
 
@@ -83,16 +68,32 @@ export class DetailedViewComponent implements OnInit {
     })
   }
 
-  navigateToLobby() {
-    this.router.navigate(['/'])
-  }
+  /**
+   * Open the box and add some animation
+   * @param {string} boxId The box id to be opened
+   */
+  onGiftBoxTap(boxId: string) {
+    this.giftBoxState = 'open';
 
-  openBoxReward(boxId: string, amount = 1) {
     this.store.dispatch(openBox({
       payload: {
         boxId,
-        amount
+        amount: 1
       }
     }));
+  }
+
+  ngOnInit() {
+    this.store.dispatch(fetchBoxes({
+      payload: {
+        free: false,
+        purchasable: true,
+        openable: true
+      }
+    }));
+  }
+
+  navigateToLobby() {
+    this.router.navigate(['/'])
   }
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core'
 import { Store } from '@ngrx/store';
-import { Apollo } from 'apollo-angular'
 import { User } from './core/models/user';
 import { Wallet } from './core/models/wallet';
 import { fetchUser } from './core/state/actions/user.actions';
@@ -16,23 +15,18 @@ import { getBalance, getCurrencySymbol, getWallet } from './core/state/selectors
 })
 export class AppComponent implements OnInit {
   wallet$ = this.store.select(getWallet)
+  user$ = this.store.select(getUser);
   balance$ = this.store.select(getBalance)
   currencySymbol$ = this.store.select(getCurrencySymbol)
-  user$ = this.store.select(getUser);
 
-  constructor(private apollo: Apollo, private store: Store<User | Wallet>) {}
+  constructor(private store: Store<User | Wallet>) {}
 
   ngOnInit(): void {
     this.store.dispatch(fetchWallet());
-
     this.store.dispatch(fetchUser());
   }
 
-  addToCart(item: any) {
-  }
-
-  get currentYear() {
+  get currentYear(): number {
     return new Date().getFullYear();
   }
-
 }

@@ -14,8 +14,13 @@ export const isBoxesLoading = createSelector(
   (state: BoxState) => state.loading
 );
 
+export const isBoxOpening = createSelector(
+  selectBoxState,
+  (state: BoxState) => state.isBoxOpening
+);
+
 export const getDetailViewBox = createSelector(
   selectBoxState,
   selectRouteParams,
-  (state: BoxState, { id }) => state.entities[id]
+  (state: BoxState, { id } = {} as any) => state.entities[id]
 );

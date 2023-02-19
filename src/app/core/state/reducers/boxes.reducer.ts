@@ -1,7 +1,7 @@
 import { Update } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import { Box } from '../../models/box';
-import { fetchBoxes, fetchBoxesSuccess, openBoxSuccess } from '../actions/boxes.actions';
+import { fetchBoxes, fetchBoxesSuccess, openBox, openBoxSuccess } from '../actions/boxes.actions';
 import { boxAdapter } from '../boxes.state';
 
 export const initialState = boxAdapter.getInitialState({
@@ -12,6 +12,7 @@ export const boxReducer = createReducer(
   initialState,
   on(fetchBoxes, (state) => ({ ...state, loading: true })),
   on(fetchBoxesSuccess, (state, { payload }) => boxAdapter.addMany(payload, ({ ...state, loading: false }))),
+  on(openBox, (state) => ({ ...state, isBoxOpening: true })),
   on(openBoxSuccess, (state, { payload }) => {
     const updatedEntities = [] as Update<Box>[];
 
@@ -30,6 +31,6 @@ export const boxReducer = createReducer(
       })
     }
 
-    return boxAdapter.updateMany(updatedEntities, ({ ...state, loading: false }));
+    return boxAdapter.updateMany(updatedEntities, ({ ...state, isBoxOpening: false }));
   })
 );

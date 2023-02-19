@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { Box, OpenedBox } from '../../models/box';
 
-export interface fetchBoxesPayload {
+export interface FetchBoxesPayload {
   free?: boolean;
   purchasable?: boolean;
   openable?: boolean;
@@ -12,7 +12,7 @@ export interface OpenBoxPayload {
   amount: number;
 }
 
-export const fetchBoxes = createAction('[Boxes] Get Boxes', props<{ payload?: fetchBoxesPayload }>());
+export const fetchBoxes = createAction('[Boxes] Get Boxes', props<{ payload?: FetchBoxesPayload }>());
 
 export const fetchBoxesSuccess = createAction('[Boxes] Get Boxes Success', props<{ payload: Box[] }>());
 
