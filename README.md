@@ -153,7 +153,7 @@ Despite this setback, I aimed to complete the test as required. Instead of relyi
 - Lazy loading: The example code does not demonstrate lazy loading of modules, but this feature should be used in larger applications to improve performance.
 - Tests: Coverage of at least 88-90%
 - Eslint: Proper eslint rules
-- Better UI/UX 
+- Better UI/UX
 - Default image upon fail to load
 
 ## Usage
