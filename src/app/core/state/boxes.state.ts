@@ -1,5 +1,5 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
-import { Box } from "../models/box";
+import { Box } from "@models/box";
 
 export interface BoxState extends EntityState<Box> {
   loading: boolean;

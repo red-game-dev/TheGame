@@ -1,8 +1,8 @@
 import { Update } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
-import { Box } from '../../models/box';
-import { fetchBoxes, fetchBoxesSuccess, openBox, openBoxSuccess } from '../actions/boxes.actions';
-import { boxAdapter } from '../boxes.state';
+import { Box } from '@models/box';
+import { fetchBoxes, fetchBoxesSuccess, openBox, openBoxSuccess } from '@actions/boxes.actions';
+import { boxAdapter } from '@state/boxes.state';
 
 export const initialState = boxAdapter.getInitialState({
   loading: false,

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Box, OpenedBox } from '../../models/box';
+import { Box, OpenedBox } from '@models/box';
 
 export interface FetchBoxesPayload {
   free?: boolean;

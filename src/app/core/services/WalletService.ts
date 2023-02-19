@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { WalletEffects } from '../state/effects/wallet.effect';
+import { WalletEffects } from '@effects/wallet.effect';
 
 @Injectable({
   providedIn: 'root'

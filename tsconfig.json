@@ -23,7 +23,22 @@
       "dom",
       "esnext.asynciterable"
     ],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@chore/*": ["src/app/core/*"],
+      "@state/*": ["src/app/core/state/*"],
+      "@actions*": ["src/app/core/state/actions/*"],
+      "@reducers/*": ["src/app/core/state/reducers/*"],
+      "@effects/*": ["src/app/core/state/effects/*"],
+      "@selectors/*": ["src/app/core/state/selectors/*"],
+      "@services/*": ["src/app/core/services/*"],
+      "@queries/*": ["src/app/core/queries/*"],
+      "@models/*": ["src/app/core/models/*"],
+      "@factories/*": ["src/app/core/factories/*"],
+      "@modules/*": ["src/app/modules/*"],
+      "@env/*": ["src/environments/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

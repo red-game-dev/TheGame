@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Wallet } from '../../models/wallet';
+import { Wallet } from '@models/wallet';
 
 export const fetchWallet = createAction('[Wallet] Get Wallet');
 

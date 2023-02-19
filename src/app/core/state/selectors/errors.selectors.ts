@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { FetchErrorsState, fetchFailedAdapter } from '../errors.state';
+import { FetchErrorsState, fetchFailedAdapter } from '@state/errors.state';
 
 const selectFetchErrorsState = createFeatureSelector<FetchErrorsState>('fetchErrors');
 

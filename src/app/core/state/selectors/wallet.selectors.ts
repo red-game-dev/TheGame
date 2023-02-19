@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Wallet } from '../../models/wallet';
-import { walletAdapter, WalletState } from '../wallet.state';
+import { Wallet } from '@models/wallet';
+import { walletAdapter, WalletState } from '@state/wallet.state';
 
 export const selectWalletState = createFeatureSelector<WalletState>('wallet');
 

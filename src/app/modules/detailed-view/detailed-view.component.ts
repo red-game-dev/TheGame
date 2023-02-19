@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { fetchBoxes, openBox } from 'src/app/core/state/actions/boxes.actions';
-import { getDetailViewBox, isBoxOpening } from 'src/app/core/state/selectors/boxes.selectors';
-import { getCurrencySymbol } from 'src/app/core/state/selectors/wallet.selectors';
-import { Box } from 'src/app/core/models/box';
-import { Wallet } from 'src/app/core/models/wallet';
+import { fetchBoxes, openBox } from '@actions/boxes.actions';
+import { getDetailViewBox, isBoxOpening } from '@selectors/boxes.selectors';
+import { getCurrencySymbol } from '@selectors/wallet.selectors';
+import { Box } from '@models/box';
+import { Wallet } from '@models/wallet';
 
 @Component({
   selector: 'app-detailed-view',

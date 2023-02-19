@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store';
-import { fetchBoxes } from '../../core/state/actions/boxes.actions';
-import { getBoxes } from '../../core/state/selectors/boxes.selectors';
+import { fetchBoxes } from '@actions/boxes.actions';
+import { getBoxes } from '@selectors/boxes.selectors';
 import { Router } from '@angular/router';
-import { getCurrencySymbol } from 'src/app/core/state/selectors/wallet.selectors';
-import { Box } from 'src/app/core/models/box';
-import { Wallet } from 'src/app/core/models/wallet';
+import { getCurrencySymbol } from '@selectors/wallet.selectors';
+import { Box } from '@models/box';
+import { Wallet } from '@models/wallet';
 
 @Component({
   selector: 'app-games',

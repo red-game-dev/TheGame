@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, mergeMap, map, switchMap } from 'rxjs/operators';
-import { fetchBoxes, fetchBoxesSuccess, openBox, OpenBoxPayload, openBoxSuccess } from '../actions/boxes.actions';
+import { fetchBoxes, fetchBoxesSuccess, openBox, OpenBoxPayload, openBoxSuccess } from '@actions/boxes.actions';
 import { GET_BOXES, OPEN_BOX_MUTATION } from '../../queries/boxes';
 import { Apollo } from 'apollo-angular'
-import { fetchFailed } from '../actions/errors.actions';
-import { fetchWallet } from '../actions/wallet.actions';
+import { fetchFailed } from '@actions/errors.actions';
+import { fetchWallet } from '@actions/wallet.actions';
 import { of } from 'rxjs';
-import { Box, OpenedBox } from '../../models/box';
+import { Box, OpenedBox } from '@models/box';
 
 interface QueryResponseBoxes {
   boxes: {

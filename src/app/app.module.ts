@@ -1,22 +1,22 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { GraphQLModule } from './graphql.module';
+import { AppRoutingModule } from '@app/app-routing.module';
+import { AppComponent } from '@app/app.component';
+import { GraphQLModule } from '@app/graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { BoxesEffects } from './core/state/effects/boxes.effects';
+import { BoxesEffects } from '@effects/boxes.effects';
 import { SerializedRouterStateSnapshot, RouterStateSerializer, StoreRouterConnectingModule, RouterState, NavigationActionTiming } from '@ngrx/router-store';
-import { initialState } from './core/state';
-import { reducers } from './core/state/reducers';
-import { WalletEffects } from './core/state/effects/wallet.effect';
-import { UserEffects } from './core/state/effects/user.effect';
-import { WalletSubscriptionService } from './core/services/WalletService';
-import { WalletSubscriptionInitializer } from './core/factories/WalletSubscriptionFactory';
-import { DetailedViewComponent } from './modules/detailed-view/detailed-view.component';
-import { GamesComponent } from './modules/games/games.component';
+import { initialState } from '@state/index';
+import { reducers } from '@reducers/index';
+import { WalletEffects } from '@effects/wallet.effect';
+import { UserEffects } from '@effects/user.effect';
+import { WalletSubscriptionService } from '@services/WalletService';
+import { WalletSubscriptionInitializer } from '@factories/WalletSubscriptionFactory';
+import { DetailedViewComponent } from '@modules/detailed-view/detailed-view.component';
+import { GamesComponent } from '@modules/games/games.component';
 
 export class CustomRouterStateSerializer implements RouterStateSerializer<SerializedRouterStateSnapshot> {
   serialize(routerState: SerializedRouterStateSnapshot) {

@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { fetchWallet, fetchWalletSuccess, updateWalletSuccess } from '../actions/wallet.actions';
-import { walletAdapter } from '../wallet.state';
+import { fetchWallet, fetchWalletSuccess, updateWalletSuccess } from '@actions/wallet.actions';
+import { walletAdapter } from '@state/wallet.state';
 
 export const initialState = walletAdapter.getInitialState({
   loading: false,

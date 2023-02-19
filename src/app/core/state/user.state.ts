@@ -1,5 +1,5 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
-import { User } from "../models/user";
+import { User } from "@models/user";
 
 export interface UserState extends EntityState<User> {
   loading: boolean;

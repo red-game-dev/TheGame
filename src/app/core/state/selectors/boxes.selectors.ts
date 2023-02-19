@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { boxAdapter, BoxState } from '../boxes.state';
-import { selectRouteParams } from './router.selectors';
+import { boxAdapter, BoxState } from '@state/boxes.state';
+import { selectRouteParams } from '@selectors/router.selectors';
 
 const selectBoxState = createFeatureSelector<BoxState>('boxes');
 

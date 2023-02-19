@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
-import { fetchWallet, fetchWalletSuccess, updateWalletSuccess } from '../actions/wallet.actions';
+import { fetchWallet, fetchWalletSuccess, updateWalletSuccess } from '@actions/wallet.actions';
 import { GET_WALLET, GET_WALLET_SUBSCRIPTION } from '../../queries/wallet';
 import { Apollo } from 'apollo-angular'
 import { of } from 'rxjs';
-import { fetchFailed } from '../actions/errors.actions';
-import { Wallet } from '../../models/wallet';
+import { fetchFailed } from '@actions/errors.actions';
+import { Wallet } from '@models/wallet';
 
 interface QueryResponseWallet {
   currentUser: {

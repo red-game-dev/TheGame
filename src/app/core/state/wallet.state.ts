@@ -1,5 +1,5 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
-import { Wallet } from "../models/wallet";
+import { Wallet } from "@models/wallet";
 
 export interface WalletState extends EntityState<Wallet> {
   loading: boolean;
